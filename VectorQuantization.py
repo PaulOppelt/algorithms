@@ -2,13 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def VG(train_x, n_v,eps, epoches=5):
+    """Args:
+        train_x: data points in shape: N_point, dim
+        n_v: number of vectors used as centroids
+        eps: learning rate for reoriantation of centroids     
+    """
     train_x = train_x.reshape(train_x.shape[0],-1)
     init_vectors = np.random.randn(n_v,train_x.shape[1])
     for _ in range(epoches):
         for i,j in enumerate(train_x):
-            vec =  np.sqrt(np.sum((init_vectors-j.reshape(1,-1))**2,axis=1))
+            vec =  np.sqrt(np.sum((init_vectors-j**2,axis=1))
             idx = np.argmin(vec)
-            init_vectors[idx] = init_vectors[idx]- eps*(init_vectors[idx]-j.reshape(1,-1))
+            init_vectors[idx] = init_vectors[idx]- eps*(init_vectors[idx]-j)
     return init_vectors
 
 # create data and visualize
