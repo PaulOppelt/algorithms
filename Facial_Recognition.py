@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import torch
+
 
 # implement algorithm to find closest match of test image in a database using comparrison on a 
 # dimension reduced feature space. dimension is reduced using PCA
