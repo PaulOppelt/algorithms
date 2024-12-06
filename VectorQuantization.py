@@ -11,7 +11,7 @@ def VG(train_x, n_v,eps, epoches=5):
     init_vectors = np.random.randn(n_v,train_x.shape[1])
     for _ in range(epoches):
         for i,j in enumerate(train_x):
-            vec =  np.sqrt(np.sum(init_vectors-j**2,axis=1))
+            vec =  np.sqrt(np.sum((init_vectors-j)**2,axis=1))
             idx = np.argmin(vec)
             init_vectors[idx] = init_vectors[idx]- eps*(init_vectors[idx]-j)
     return init_vectors
